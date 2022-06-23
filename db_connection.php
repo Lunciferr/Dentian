@@ -17,14 +17,14 @@ class DB_Connect
             $password2 = "bKFKRjTEB9";
 
             $host3 = "sql.freedb.tech";
-            $db3 = "freedb_dentian";
+            $db3 = "freedb_dentian_db";
             $username3 = "freedb_dentian";
-            $password3 = "QN*?nGQ5XefxpTx";
+            $password3 = "SfKqW&2s!8G?7a?";
 
             $active_group = 'default';
             $query_builder = TRUE;
 
-            $conn = new PDO('mysql:host='. $host2 . '; dbname=' . $db2 , $username2, $password2);
+            $conn = new PDO('mysql:host='. $host3 . '; dbname=' . $db3 , $username3, $password3);
 
             return $conn;
         } catch (PDOException $e) {
