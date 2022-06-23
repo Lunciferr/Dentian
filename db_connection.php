@@ -6,7 +6,7 @@ class DB_Connect {
         try {
             $username = "b4505c2a49ed16";
             $password = "51e5c749";
-            $conn = new PDO('mysql:host=mysql://b4505c2a49ed16:51e5c749@us-cdbr-east-05.cleardb.net; dbname=heroku_ce2aaaeb2f2fe3c', $username, $password);
+            $conn = new PDO('mysql:host=us-cdbr-east-05.cleardb.net; dbname=heroku_ce2aaaeb2f2fe3c', $username, $password);
 
             return $conn;
         }
