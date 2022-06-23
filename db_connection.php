@@ -24,7 +24,7 @@ class DB_Connect
             $active_group = 'default';
             $query_builder = TRUE;
 
-            $conn = new PDO('mysql:host='. $host3 . '; dbname=' . $db3 , $username3, $password3);
+            $conn = new PDO('mysql:host='. $host2 . '; dbname=' . $db2 , $username2, $password2);
 
             return $conn;
         } catch (PDOException $e) {
