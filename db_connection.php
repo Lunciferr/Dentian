@@ -7,17 +7,19 @@ class DB_Connect
     {
         try {
             $host = "us-cdbr-east-05.cleardb.net";
+            $db = "heroku_ce2aaaeb2f2fe3c";
             $username = "b4505c2a49ed16";
             $password = "51e5c749";
 
             $anotherHost = "sql6.freemysqlhosting.net";
+            $anotherDB = "sql6501622";
             $anotherUsername = "sql6501622";
             $anotherPassword = "bKFKRjTEB9";
 
             $active_group = 'default';
             $query_builder = TRUE;
 
-            $conn = new PDO('mysql:host='. $anotherHost . '; dbname=heroku_ce2aaaeb2f2fe3c', $anotherUsername, $anotherPassword);
+            $conn = new PDO('mysql:host='. $anotherHost . '; dbname=' . $anotherDB , $anotherUsername, $anotherPassword);
 
             return $conn;
         } catch (PDOException $e) {
