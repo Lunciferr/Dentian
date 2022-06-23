@@ -355,7 +355,7 @@ switch ($_SESSION['Role']) {
             case "System Admin":
                 echo
                 '
-                <a class="navbar-brand pe-3" href="AdminDashBoard.php">
+                <a class="navbar-brand pe-3" href="AdminDashboard.php">
                     <img src="img/Logo1.png" alt="" width="275" height="70">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
