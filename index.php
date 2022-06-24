@@ -27,7 +27,7 @@ if (isset($_POST["login"])) {
 	$password = $_POST['loginPass'];
 
 	$db = new DB_Connect();
-	$stmt = $db->connect()->prepare("SELECT * FROM patient_profile WHERE Patient_ID = ? and NRIC_PNum = ?");
+	$stmt = $db->connect()->prepare("SELECT * FROM patient_profile WHERE Email = ? and NRIC_PNum = ?");
 	$stmt->execute([$username, $password]);
 
 	if ($stmt->rowCount() > 0) {
@@ -101,9 +101,8 @@ if (isset($_POST["login"])) {
 					<div class="form-floating">
 						<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="loginPass" autofocus>
 						<label for="floatingPassword">Password</label>
-
-						<div class="text-end">
-							<a href="#!">Forgot password?</a>
+						<div class="text-start">
+							<a href="ForgetPassword.php">Forgot password?</a>
 						</div>
 					</div>
 					<div class="mt-3">

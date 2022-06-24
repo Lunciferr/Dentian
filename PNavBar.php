@@ -48,4 +48,4 @@
             <button class="btn btn-secondary" type="submit" name="logout" onclick="location.href = 'Logout.php';">Logout!</button>
         </div>
     </div>
-</nav>>
+</nav>

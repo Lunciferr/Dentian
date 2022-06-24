@@ -1,23 +1,21 @@
 <?php
 include 'db_connection.php';
 require_once('Navbar.php');
-//$connect = new PDO("mysql:host=localhost;dbname=fyp", "root", "");
 //Calling of dentist and dentist assistant
 $db = new DB_Connect();
 $stmt1 = $db->connect()->prepare("SELECT First_Name FROM user_table where Role = 'Dentist' or Role = 'Dentist Assistant'");
 $stmt1->execute();
-//$query = "SELECT First_Name FROM user_table where Role = 'Dentist' or Role = 'Dentist Assistant'";
-$resultforDA1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
-//$resultforDA2 = $connect->query($query);
-//$resultforcDA1 = $connect->query($query);
-//$resultforcDA2 = $connect->query($query);
+if ($stmt1->rowCount() > 0) {
+    $resultforDA1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+}
+
 if (!isset($_SESSION['Role']) && empty($_SESSION['Role'])) {
     header("Location: index.php");
 } else {
-	if (!isset($_SESSION['patientrecords']) && empty($_SESSION['patientrecords'])){
-        
+    if (!isset($_SESSION['patientrecords']) && empty($_SESSION['patientrecords'])) {
+
         $stmt = $db->connect()->prepare("SELECT patient_profile.First_Name, patient_profile.Last_Name, patient_record.* FROM `patient_record` right join patient_profile on patient_record.Patient_ID = patient_profile.Patient_ID order by patient_record.Treatment_Date DESC");
-        
+
         $stmt->execute();
         $errormsg = '';
         $rowCount = '';
@@ -25,13 +23,11 @@ if (!isset($_SESSION['Role']) && empty($_SESSION['Role'])) {
             $patient_records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     } else {
-		$patient_records = $_SESSION['patientrecords'];
+        $patient_records = $_SESSION['patientrecords'];
         $errormsg = $_SESSION['errorMsg'];
-		$rowCount = $_SESSION['rowCount'];
+        $rowCount = $_SESSION['rowCount'];
     }
 }
-
-
 
 if (isset($_POST["editBtn"])) {
     $rID = $_POST['rID'];
@@ -46,20 +42,20 @@ if (isset($_POST["editBtn"])) {
      `Material_used` = '$Mat', `Doctor/Assistant 1` = '$DA1', `Doctor/Assistant 2` = '$DA2' where `Record_ID` = $rID ");
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
-		echo '<meta http-equiv="refresh" content="1">';
-		echo "<span class='d-block p-2 bg-success text-white text-center'>Record successfully updated!</span>";
-		return true;
-	} else {
-		return false;
+        echo '<meta http-equiv="refresh" content="1">';
+        echo "<span class='d-block p-2 bg-success text-white text-center'>Record successfully updated!</span>";
+        return true;
+    } else {
+        return false;
     }
 }
 
 if (isset($_POST["allRecords"])) {
-	unset($_SESSION['patientrecords']);
-	$db = new DB_Connect();
+    unset($_SESSION['patientrecords']);
+    $db = new DB_Connect();
 
-	$stmt = $db->connect()->prepare("SELECT patient_profile.First_Name, patient_profile.Last_Name, patient_record.* FROM `patient_record` right join patient_profile on patient_record.Patient_ID = patient_profile.Patient_ID order by patient_record.Treatment_Date DESC");
-        $stmt->execute();
+    $stmt = $db->connect()->prepare("SELECT patient_profile.First_Name, patient_profile.Last_Name, patient_record.* FROM `patient_record` right join patient_profile on patient_record.Patient_ID = patient_profile.Patient_ID order by patient_record.Treatment_Date DESC");
+    $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
         $patient_records = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -144,8 +140,6 @@ if (isset($_POST["allRecords"])) {
         .topnav input[type=text] {
             border: 5px solid #ccc;
         }
-
-        
     </style>
 </head>
 
@@ -193,16 +187,15 @@ if (isset($_POST["allRecords"])) {
                 ?>
             </tbody>
         </table>
-        <?php	
-		echo "$errormsg";
+        <?php
+        echo "$errormsg";
 
-		if ($rowCount == 1){
-			echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount result found!</span>";
-		}
-		else if ($rowCount > 1) {
-			echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount results found!</span>";
-		}
-		?>
+        if ($rowCount == 1) {
+            echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount result found!</span>";
+        } else if ($rowCount > 1) {
+            echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount results found!</span>";
+        }
+        ?>
     </div>
 
     <!-- Edit Form Modal (create) -->
@@ -237,12 +230,12 @@ if (isset($_POST["allRecords"])) {
                                 <option value="Dental Implants">Dental Implants</option>
                             </select>
                             <div class="invalid-feedback">
-								Please select a type of service.
-							</div>
+                                Please select a type of service.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Doctor/Assistant 1</label>
-                            <select name="DA1" class="form-select" id="DA1" name = "DA1" required>
+                            <select name="DA1" class="form-select" id="DA1" name="DA1" required>
                                 <option value="Nil">Nil</option>
                                 <?php
                                 foreach ($resultforDA1 as $row) {
@@ -251,12 +244,12 @@ if (isset($_POST["allRecords"])) {
                                 ?>
                             </select>
                             <div class="invalid-feedback">
-								Please choose a Doctor/Assistant.
-							</div>
+                                Please choose a Doctor/Assistant.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Doctor/Assistant associated with treatment 2 (Write "Nil" if none)</label>
-                            <select name="DA2" class="form-select" id="DA2" name = "DA2" required>
+                            <select name="DA2" class="form-select" id="DA2" name="DA2" required>
                                 <option value="Nil">Nil</option>
                                 <?php
                                 foreach ($resultforDA1 as $row) {
@@ -265,22 +258,22 @@ if (isset($_POST["allRecords"])) {
                                 ?>
                             </select>
                             <div class="invalid-feedback">
-								Please choose a Doctor/Assistant.
-							</div>
+                                Please choose a Doctor/Assistant.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Material used</label>
                             <textarea type="text" class="form-control" name="mat" id=mat pattern="^([A-Za-z]+[,.]?[ ]?|[A-Za-z]+['-]?)+$" required></textarea>
                             <div class="invalid-feedback">
-								Please enter material used.
-							</div>
+                                Please enter material used.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
                             <textarea type="text" class="form-control" name="description" id=description required></textarea>
                             <div class="invalid-feedback">
-								Please enter description.
-							</div>
+                                Please enter description.
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary float-end" name="editBtn">Edit</button>
 
@@ -314,49 +307,32 @@ if (isset($_POST["allRecords"])) {
             $('#DA2').val($DA2);
             $('#mat').val($mat);
             $('#description').val($description);
-            //$("#radio_1").prop("checked", true);
-            //alert("You want to edit: Category with ID " + $('.category-id', $tr).text() + " & Name: " + $('.category-name', $tr).text());
-            //You can use this info and set it to the inputs with javascript: $("edit_category_modal input[type='text']").val($('.category-name', $tr).text()) for example;
         });
     });
 </script>
 <script>
-    /*
-    var select_box_element = document.querySelector('#DA1');
-
-    dselect(select_box_element, {
-        search: true
-    });
-    var select_box_element = document.querySelector('#DA2');
-
-    dselect(select_box_element, {
-        search: true
-    });
-    */
-</script>
-<script>
-   function refreshPage(){
-    window.location.reload();
-	}
+    function refreshPage() {
+        window.location.reload();
+    }
     (function() {
-		'use strict'
+        'use strict'
 
-		// Fetch all the forms we want to apply custom Bootstrap validation styles to
-		var forms = document.querySelectorAll('.needs-validation')
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-		// Loop over them and prevent submission
-		Array.prototype.slice.call(forms)
-			.forEach(function(form) {
-				form.addEventListener('submit', function(event) {
-					if (!form.checkValidity()) {
-						event.preventDefault()
-						event.stopPropagation()
-					}
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-					form.classList.add('was-validated')
-				}, false)
-			})
-	})();
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })();
 </script>
 
 

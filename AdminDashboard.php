@@ -1,5 +1,4 @@
 <?php
-//change
 ob_start();
 include 'db_connection.php';
 include 'Navbar.php';

@@ -36,17 +36,14 @@ if (isset($_POST["allRecords"])) {
 if (!isset($_SESSION['Role']) && empty($_SESSION['Role'])) {
     header("Location: index.php");
 } else {
-    $connect1 = new PDO("mysql:host=localhost;dbname=fyp", "root", "");
-    $db1 = new DB_Connect();
-    $stmt1 = $db1->connect()->prepare("SELECT * FROM patient_record");
-    $query = "SELECT First_Name FROM user_table where Role = 'Dentist' or Role = 'Dentist Assistant'";
-    $resultforDA1 = $connect1->query($query);
-    $resultforDA2 = $connect1->query($query);
-    $resultforcDA1 = $connect1->query($query);
-    $resultforcDA2 = $connect1->query($query);
+    $db = new DB_Connect();
+    $stmt1 = $db->connect()->prepare("SELECT * FROM patient_record");
     $stmt1->execute();
 
     if ($stmt1->rowCount() > 0) {
+        $stmt2 = $db->connect()->prepare("SELECT First_Name FROM user_table where Role = 'Dentist' or Role = 'Dentist Assistant'");
+        $stmt2->execute();
+        $resultforcDA1 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         $patient_records = $stmt1->fetchAll(PDO::FETCH_ASSOC);
     } else {
     }
@@ -515,8 +512,8 @@ if (isset($_POST["createBtn"])) {
                             <label class="form-label">Date of treatment</label>
                             <input type="date" class="form-control" name="TDate" required>
                             <div class="invalid-feedback">
-								Please select a date.
-							</div>
+                                Please select a date.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Type of service</label>
@@ -528,8 +525,8 @@ if (isset($_POST["createBtn"])) {
                                 <option value="Dental Implants">Dental Implants</option>
                             </select>
                             <div class="invalid-feedback">
-								Please choose a type of service.
-							</div>
+                                Please choose a type of service.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Doctor/Assistant associated with treatment 1</label>
@@ -542,29 +539,29 @@ if (isset($_POST["createBtn"])) {
                                 ?>
                             </select>
                             <div class="invalid-feedback">
-								Please choose a Doctor/Assistant.
-							</div>
+                                Please choose a Doctor/Assistant.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Doctor/Assistant associated with treatment 2 (Write "Nil" if none)</label>
                             <select name="cDA2" class="form-select" id="cDA2" required>
                                 <option value="">Nil</option>
                                 <?php
-                                foreach ($resultforcDA2 as $row) {
+                                foreach ($resultforcDA1 as $row) {
                                     echo '<option value="' . $row["First_Name"] . '">' . $row["First_Name"] . '</option>';
                                 }
                                 ?>
                             </select>
                             <div class="invalid-feedback">
-								Please choose a Doctor/Assistant/NIL.
-							</div>
+                                Please choose a Doctor/Assistant/NIL.
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Material used</label>
                             <textarea type="text" class="form-control" name="cMat" id="cMat" required></textarea>
                             <div class="invalid-feedback">
-								Please enter material used.
-							</div>
+                                Please enter material used.
+                            </div>
                         </div>
                         <div class="col-md-12 pt-3">
                             <div>
@@ -610,8 +607,8 @@ if (isset($_POST["createBtn"])) {
                             <label class="form-label">Description</label>
                             <textarea rows="8" type="text" class="form-control" name="cDescription" id="cDescription" required></textarea>
                             <div class="invalid-feedback">
-								Please enter description.
-							</div>
+                                Please enter description.
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary" onclick="create()" name="createBtn">Create</button>
 
@@ -656,40 +653,28 @@ if (isset($_POST["createBtn"])) {
     });
 </script>
 <script>
-    var select_box_element = document.querySelector('#cDA1');
-
-    dselect(select_box_element, {
-        search: true
-    });
-    var select_box_element = document.querySelector('#cDA2');
-
-    dselect(select_box_element, {
-        search: true
-    });
-</script>
-<script>
     function refreshPage() {
         window.location.reload();
     }
     (function() {
-		'use strict'
+        'use strict'
 
-		// Fetch all the forms we want to apply custom Bootstrap validation styles to
-		var forms = document.querySelectorAll('.needs-validation')
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
 
-		// Loop over them and prevent submission
-		Array.prototype.slice.call(forms)
-			.forEach(function(form) {
-				form.addEventListener('submit', function(event) {
-					if (!form.checkValidity()) {
-						event.preventDefault()
-						event.stopPropagation()
-					}
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-					form.classList.add('was-validated')
-				}, false)
-			})
-	})();
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })();
 </script>
 
 
