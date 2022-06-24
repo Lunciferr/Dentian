@@ -16,10 +16,10 @@ class DB_Connect
             $username2 = "sql6501622";
             $password2 = "bKFKRjTEB9";
 
-            $host3 = "databases-auth.000webhost.com";
-            $db3 = "id19160125_dentian";
-            $username3 = "id19160125_dentian_admin";
-            $password3 = 'BC$?t*ve|b#AW8\A$u';
+            $host3 = "sql111.unaux.com";
+            $db3 = "unaux_32026185_dentian";
+            $username3 = "unaux_32026185";
+            $password3 = 'qjfo8u5p6ev840th';
 
             $active_group = 'default';
             $query_builder = TRUE;
