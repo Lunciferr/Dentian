@@ -12,19 +12,14 @@ class DB_Connect
             $password = "51e5c749";
 
             $host2 = "sql6.freemysqlhosting.net";
-            $db2 = "sql6501622";
-            $username2 = "sql6501622";
-            $password2 = "bKFKRjTEB9";
-
-            $host3 = "sql111.unaux.com";
-            $db3 = "unaux_32026185_dentian";
-            $username3 = "unaux_32026185";
-            $password3 = 'qjfo8u5p6ev840th';
+            $db2 = "sql6501826";
+            $username2 = "sql6501826";
+            $password2 = "YnaPNqTYI4";
 
             $active_group = 'default';
             $query_builder = TRUE;
 
-            $conn = new PDO('mysql:host='. $host3 . '; dbname=' . $db3 , $username3, $password3);
+            $conn = new PDO('mysql:host='. $host2 . '; dbname=' . $db2 , $username2, $password2);
 
             return $conn;
         } catch (PDOException $e) {
