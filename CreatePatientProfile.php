@@ -646,7 +646,7 @@ if (isset($_POST["addPatientProfileBtn"])) {
                         <input type="text" class="form-control" name="familyPhone" id="familyPhone">
                     </div>
                     <div class="col-md-2 mt-4 pt-2">
-                        <button type="button" class="btn btn-primary" name="verifyBtn" id="verifyBtn" onclick=check() disabled>Verify</button>
+                        <button type="button" class="btn btn-primary" name="verifyBtn" id="verifyBtn" onclick=check()>Verify</button>
                     </div>
                 </div>
             </div>
