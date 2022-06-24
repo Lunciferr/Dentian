@@ -1,16 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: sql6.freemysqlhosting.net
--- Generation Time: Jun 24, 2022 at 10:26 AM
--- Server version: 5.5.62-0ubuntu0.14.04.1
--- PHP Version: 7.0.33-0ubuntu0.16.04.16
+-- Host: 127.0.0.1
+-- Generation Time: Jun 24, 2022 at 01:42 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+08:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,7 +18,7 @@ SET time_zone = "+08:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sql6501826`
+-- Database: `fyp`
 --
 
 -- --------------------------------------------------------
@@ -92,7 +91,7 @@ CREATE TABLE `patient_profile` (
   `Existing_Med_Conds` varchar(200) DEFAULT NULL,
   `Referred_by_clinic` varchar(50) DEFAULT NULL,
   `Referred_memo` varchar(200) DEFAULT NULL,
-  `Family_ID` int(100) DEFAULT NULL,
+  `Family_ID` int(3) DEFAULT NULL,
   `Emer_Name` varchar(20) NOT NULL,
   `Emer_Contact` int(8) NOT NULL,
   `Emer_relation` varchar(10) NOT NULL,
@@ -104,22 +103,22 @@ CREATE TABLE `patient_profile` (
 --
 
 INSERT INTO `patient_profile` (`Patient_ID`, `Status`, `First_Name`, `Last_Name`, `NRIC_PNum`, `Gender`, `Birth_Date`, `Address`, `Nationality`, `Phone_Num`, `Email`, `Marital Status`, `Occupation`, `Smoker`, `Allergies`, `Long_term_med`, `Existing_Med_Conds`, `Referred_by_clinic`, `Referred_memo`, `Family_ID`, `Emer_Name`, `Emer_Contact`, `Emer_relation`, `Subsidies`) VALUES
-(1, 'Active', 'Elong', 'Masked', 'S8515249F', 'M', '1971-06-28', '3500 Deer Creek Road, Palo Alto', 'Singaporean', 84512355, 'elongmask@testla.com', 'Divorced', 'Investor', 'Yes', 'NULL', 'NULL', 'High Blood Pressure', 'NULL', 'NULL', 123, 'May Mask', 91234567, 'Relative', 'No'),
-(2, 'Active', 'Steve', 'Jobs', 'S2324914E', 'M', '1992-01-30', '576 East Coast Road, S(459185)', 'Singaporean', 82412051, 'steve@orange.com', 'Married', 'Engineer', 'No', 'Penicillin', 'NULL', 'Laryngeal cancer', 'Planet Dental Centre Pte. Ltd.', 'Referred for unrestorable tooth', 420, 'Henry Jobs', 89012225, 'Siblings', 'Yes'),
-(3, 'Active', 'Peter', 'Lim', 'S9477780A', 'M', '1994-02-10', '8 Grange Road 09-01 Cineleisure Orchard Singapore ', 'Singaporean', 98653976, 'peterlim@sim.sg', 'Married', 'Investor', 'Yes', 'Diary food, seafood', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Mary Jane', 83776810, 'Mother', 'Yes'),
-(4, 'Active', 'Tom', 'Jerry', 'S4988877E', 'M', '1995-08-15', '5001 BEACH ROAD, #03-96 Singapore 199588', 'South Korean', 86708939, 'tomandjerry@disney.com', 'Separated', 'Actor', 'Yes', 'Shellfish, egg', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Crystal', 82187343, 'Siblings', 'No'),
-(5, 'Active', 'Boon', 'Tong Kee', 'S8185724E', 'M', '1982-09-18', '101 Kitchener Rd #01-23 Jln Besar Plaza S(761101)', 'Chinese', 81275824, 'btk@chickenrice.com', 'Married', 'Founder', 'Yes', 'Peanuts', 'Candesartan', 'Candesartan', 'Luminuous Dental Clinic', 'Broken Front tooth from fall in kitchen', 1, 'Wee Nam Kee', 91824754, 'Friend', 'Yes'),
-(6, 'Active', 'Steve', 'Rogers', 'S9541535I', 'M', '1995-06-20', '261 Waterloo St #03-27', 'South African', 95845632, 'Steve@avengers.com', 'Single', 'Military', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Peggy ', 94563214, 'Friend', 'No'),
-(7, 'Active', 'Mohammad', 'Ali', 'S7843690F', 'M', '1975-05-19', '55 Toh Guan Road East 03-01', 'American', 88125784, 'ali@fighter.com', 'Married', 'Professional Fighter', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Baba', 91587586, 'Siblings', 'No'),
-(8, 'Active', 'Bell', 'Gates', 'S9541534I', 'M', '1995-06-21', '190 Clemenceau Ave #01-21', 'American', 95632145, 'Bellgates@myghostsoft.com', 'Single', 'Business leader', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Melinda', 95463258, 'Spouse', 'No'),
-(9, 'Active', 'Mark', 'Lee', 'S0931492Z', 'M', '1998-01-04', 'Blk 253, Pasir Ris St 21 #01-233 Singapore 510253', 'Thai', 96613907, 'marklee@mediacorp.com', 'Separated', 'Director', 'Yes', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Janet Lee', 96372904, 'Spouse', 'Yes'),
-(10, 'Active', 'Sar', 'Kor', 'S8517693D', 'M', '1984-05-20', 'Tampines Mart 5 Tampines Street 32 #01-14', 'Singaporean', 96172466, 'sarkor@shirtpants.com', 'Separated', 'Housewife', 'Yes', 'Fur and peanuts', 'NULL', 'NULL', 'NULL', 'NULL', 420, 'Ali', 88125784, 'Friend', 'No'),
-(11, 'Active', 'Ip', 'Man', 'S9254863M', 'M', '2005-06-14', '277 ORCHARD ROAD#B1-03', 'Chinese', 96415896, 'Ipman@gmail.com', 'Single', 'Teacher', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 412, 'Ip Chun', 94850369, 'Father', 'No'),
-(12, 'Active', 'Charles', 'Yeo', 'S7158249A', 'M', '1971-06-27', '143 CECIL STREET, #09-01', 'Singaporean', 91245838, 'chenghetitong@psp.com', 'Single', 'Politician', 'No', 'NULL', 'NULL', 'Valium', 'NULL', 'NULL', 1, 'Tony', 92257284, 'Siblings', 'No'),
-(13, 'Active', 'Jordon', 'Lamsey', 'S6589845M', 'M', '1999-06-07', '3 Pasir Panjang Road 10-35 Alexandra Distripark', 'American', 96312585, 'JordonLamsey@HellKitchen.com', 'Married', 'Chef', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Tina Lamsey', 98436201, 'Spouse', 'No'),
-(14, 'Active', 'Donnie', 'Yen', 'S5650161D', 'M', '1991-07-08', 'Kilat Centre 33 Lorong Kilat #02-04 Singapore 5981', 'Singaporean', 96772978, 'donnieipman@gmail.com', 'Married', 'Fighter', 'No', 'NULL', 'Singulair, Flovent, Advair, Pulmicort, Symbicort', 'NULL', 'Family Clinic Ptd Ltd', 'Servere headache. Need more in-depth x-ray scan.', 1, 'Olivia Yen', 96882374, 'Spouse', 'No'),
-(15, 'Active', 'Gabriel', 'Quak', 'S7617482D', 'M', '1988-07-27', '1 Rochor Canal Road #01-33 Sim Lim Square', 'Singaporean', 92857646, 'quakgabriel@lcs.com', 'Married', 'Professional Footballer', 'No', 'NULL', 'NULL', 'NULL', 'Tampines Polyclinic', 'Specialist', 1, 'Wendy', 88125784, 'Spouse', 'No'),
-(16, 'Active', 'Wayne', 'Johnson', 'S9615486J', 'M', '2022-06-23', '222 Tagore Lane 01-11 TG Building', 'Argentinean', 90236485, 'WayneJohn@wwe.com', 'Married', 'Actor', 'No', 'Steroids', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Laura', 98463012, 'Spouse', 'No');
+(1, 'Active', 'Elong', 'Masked', 'S8515249F', 'M', '1971-06-28', '3500 Deer Creek Road, Palo Alto', 'Singaporean', 84512355, 'elongmask@testla.com', 'Divorced', 'Investor', 'Yes', 'NULL', 'NULL', 'High Blood Pressure', 'NULL', 'NULL', 3136, 'May Mask', 91234567, 'Relative', 'No'),
+(2, 'Active', 'Steve', 'Jobs', 'S2324914E', 'M', '1992-01-30', '576 East Coast Road, S(459185)', 'Singaporean', 82412051, 'steve@orange.com', 'Married', 'Engineer', 'No', 'Penicillin', 'NULL', 'Laryngeal cancer', 'Planet Dental Centre Pte. Ltd.', 'Referred for unrestorable tooth', 8966, 'Henry Jobs', 89012225, 'Siblings', 'Yes'),
+(3, 'Active', 'Peter', 'Lim', 'S9477780A', 'M', '1994-02-10', '8 Grange Road 09-01 Cineleisure Orchard Singapore ', 'Singaporean', 98653976, 'peterlim@sim.sg', 'Married', 'Investor', 'Yes', 'Diary food, seafood', 'NULL', 'NULL', 'NULL', 'NULL', 2169, 'Mary Jane', 83776810, 'Mother', 'Yes'),
+(4, 'Active', 'Tom', 'Jerry', 'S4988877E', 'M', '1995-08-15', '5001 BEACH ROAD, #03-96 Singapore 199588', 'South Korean', 86708939, 'tomandjerry@disney.com', 'Separated', 'Actor', 'Yes', 'Shellfish, egg', 'NULL', 'NULL', 'NULL', 'NULL', 1118, 'Crystal', 82187343, 'Siblings', 'No'),
+(5, 'Active', 'Boon', 'Tong Kee', 'S8185724E', 'M', '1982-09-18', '101 Kitchener Rd #01-23 Jln Besar Plaza S(761101)', 'Chinese', 81275824, 'btk@chickenrice.com', 'Married', 'Founder', 'Yes', 'Peanuts', 'Candesartan', 'Candesartan', 'Luminuous Dental Clinic', 'Broken Front tooth from fall in kitchen', 3136, 'Wee Nam Kee', 91824754, 'Friend', 'Yes'),
+(6, 'Active', 'Steve', 'Rogers', 'S9541535I', 'M', '1995-06-20', '261 Waterloo St #03-27', 'South African', 95845632, 'Steve@avengers.com', 'Single', 'Military', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 3223, 'Peggy ', 94563214, 'Friend', 'No'),
+(7, 'Active', 'Mohammad', 'Ali', 'S7843690F', 'M', '1975-05-19', '55 Toh Guan Road East 03-01', 'American', 88125784, 'ali@fighter.com', 'Married', 'Professional Fighter', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1394, 'Baba', 91587586, 'Siblings', 'No'),
+(8, 'Active', 'Bell', 'Gates', 'S9541534I', 'M', '1995-06-21', '190 Clemenceau Ave #01-21', 'American', 95632145, 'Bellgates@myghostsoft.com', 'Single', 'Business leader', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 7974, 'Melinda', 95463258, 'Spouse', 'No'),
+(9, 'Active', 'Mark', 'Lee', 'S0931492Z', 'M', '1998-01-04', 'Blk 253, Pasir Ris St 21 #01-233 Singapore 510253', 'Thai', 96613907, 'marklee@mediacorp.com', 'Separated', 'Director', 'Yes', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 8966, 'Janet Lee', 96372904, 'Spouse', 'Yes'),
+(10, 'Active', 'Sar', 'Kor', 'S8517693D', 'M', '1984-05-20', 'Tampines Mart 5 Tampines Street 32 #01-14', 'Singaporean', 96172466, 'sarkor@shirtpants.com', 'Separated', 'Housewife', 'Yes', 'Fur and peanuts', 'NULL', 'NULL', 'NULL', 'NULL', 4247, 'Ali', 88125784, 'Friend', 'No'),
+(11, 'Active', 'Ip', 'Man', 'S9254863M', 'M', '2005-06-14', '277 ORCHARD ROAD#B1-03', 'Chinese', 96415896, 'Ipman@gmail.com', 'Single', 'Teacher', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1929, 'Ip Chun', 94850369, 'Father', 'No'),
+(12, 'Active', 'Charles', 'Yeo', 'S7158249A', 'M', '1971-06-27', '143 CECIL STREET, #09-01', 'Singaporean', 91245838, 'chenghetitong@psp.com', 'Single', 'Politician', 'No', 'NULL', 'NULL', 'Valium', 'NULL', 'NULL', 8848, 'Tony', 92257284, 'Siblings', 'No'),
+(13, 'Active', 'Jordon', 'Lamsey', 'S6589845M', 'M', '1999-06-07', '3 Pasir Panjang Road 10-35 Alexandra Distripark', 'American', 96312585, 'JordonLamsey@HellKitchen.com', 'Married', 'Chef', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 6120, 'Tina Lamsey', 98436201, 'Spouse', 'No'),
+(14, 'Active', 'Donnie', 'Yen', 'S5650161D', 'M', '1991-07-08', 'Kilat Centre 33 Lorong Kilat #02-04 Singapore 5981', 'Singaporean', 96772978, 'donnieipman@gmail.com', 'Married', 'Fighter', 'No', 'NULL', 'Singulair, Flovent, Advair, Pulmicort, Symbicort', 'NULL', 'Family Clinic Ptd Ltd', 'Servere headache. Need more in-depth x-ray scan.', 3200, 'Olivia Yen', 96882374, 'Spouse', 'No'),
+(15, 'Active', 'Gabriel', 'Quak', 'S7617482D', 'M', '1988-07-27', '1 Rochor Canal Road #01-33 Sim Lim Square', 'Singaporean', 92857646, 'quakgabriel@lcs.com', 'Married', 'Professional Footballer', 'No', 'NULL', 'NULL', 'NULL', 'Tampines Polyclinic', 'Specialist', 7419, 'Wendy', 88125784, 'Spouse', 'No'),
+(16, 'Active', 'Wayne', 'Johnson', 'S9615486J', 'M', '2022-06-23', '222 Tagore Lane 01-11 TG Building', 'Argentinean', 90236485, 'WayneJohn@wwe.com', 'Married', 'Actor', 'No', 'Steroids', 'NULL', 'NULL', 'NULL', 'NULL', 1926, 'Laura', 98463012, 'Spouse', 'No');
 
 -- --------------------------------------------------------
 
@@ -255,16 +254,19 @@ ALTER TABLE `user_table`
 --
 ALTER TABLE `appointment_table`
   MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `dentist_schedule`
 --
 ALTER TABLE `dentist_schedule`
   MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `patient_record`
 --
 ALTER TABLE `patient_record`
   MODIFY `Record_ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- Constraints for dumped tables
 --
