@@ -72,8 +72,8 @@ if (isset($_POST["find"])) {
 </style>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #464545;">
     <div class="container-fluid">
-                <a class="navbar-brand pe-3" href="PatientDashboard.php">
-                    <img src="img/logo1.png" alt="" width="275" height="70">
+                <a class="navbar-brand pe-3" href="index.php">
+                    <img src="img/Logo1.png" alt="" width="275" height="70">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <div class="navbar-nav">
