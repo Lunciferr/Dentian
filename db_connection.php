@@ -16,10 +16,10 @@ class DB_Connect
             $username2 = "sql6501622";
             $password2 = "bKFKRjTEB9";
 
-            $host3 = "sql.freedb.tech";
-            $db3 = "freedb_dentian_db";
-            $username3 = "freedb_dentian";
-            $password3 = "SfKqW&2s!8G?7a?";
+            $host3 = "databases.000webhost.com";
+            $db3 = "id19160125_dentian";
+            $username3 = "id19160125_dentian_admin";
+            $password3 = 'BC$?t*ve|b#AW8\A$u';
 
             $active_group = 'default';
             $query_builder = TRUE;
