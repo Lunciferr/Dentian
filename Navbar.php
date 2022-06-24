@@ -101,7 +101,7 @@ switch ($_SESSION['Role']) {
                         $filter[] = 'patient_record.Material_used LIKE "' . '%' . $materials . '%"';
                     }
                     $db = new DB_Connect();
-                    $stmt = $db->connect()->prepare("SELECT patient_profile.First_Name, patient_profile.Last_Name, patient_record.* FROM `patient_record` right join patient_profile on patient_record.Patient_ID = patient_profile.Patient_ID
+                    $stmt = $db->connect()->prepare("SELECT patient_profile.First_Name, patient_profile.Last_Name, patient_record.* FROM `patient_record` left join patient_profile on patient_record.Patient_ID = patient_profile.Patient_ID
                     where " . implode(" AND ", $filter) . "order by patient_record.Treatment_Date DESC");
                     $stmt->execute();
                     if($stmt->rowCount()==0){
