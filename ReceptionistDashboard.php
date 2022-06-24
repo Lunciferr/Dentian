@@ -6,7 +6,7 @@ if (!isset($_SESSION['Role']) && empty($_SESSION['Role'])) {
     header("Location: index.php");
     exit();
 } else {
-    if (!isset($_SESSION['patientprof']) && empty($_SESSION['patientprof']) ) {
+    if (!isset($_SESSION['patientprof']) && empty($_SESSION['patientprof'])) {
         $db = new DB_Connect();
         $stmt = $db->connect()->prepare("SELECT * FROM patient_profile");
         $stmt->execute();
@@ -15,10 +15,9 @@ if (!isset($_SESSION['Role']) && empty($_SESSION['Role'])) {
         $addSuccess = '';
         if ($stmt->rowCount() > 0) {
             $patients_profile = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if (!isset($_SESSION['successAdd']) && empty($_SESSION['successAdd'])){
+            if (!isset($_SESSION['successAdd']) && empty($_SESSION['successAdd'])) {
                 $addSuccess = '';
-            }
-            else {
+            } else {
                 $addSuccess = $_SESSION['successAdd'];
             }
         }
@@ -26,16 +25,55 @@ if (!isset($_SESSION['Role']) && empty($_SESSION['Role'])) {
         $addSuccess = '';
         $patients_profile =  $_SESSION['patientprof'];
         $errormsg = $_SESSION['errorMsg'];
-		$rowCount = $_SESSION['rowCount'];
+        $rowCount = $_SESSION['rowCount'];
     }
 }
 
 if (isset($_POST["allPatients"])) {
-	unset($_SESSION['patientprof']);
-	$db = new DB_Connect();
+    
+    /*
+    $data = array(
+        "sender" => array(
+            "email" => 'dentian.fyp22@gmail.com',
+            "name" => 'Dentian Ptd Ltd'         
+        ),
+        "to" => array(
+            array(
+                "email" => "eugene838@hotmail.com",
+                "name" => "Eugene SIM"
+            )
+    
+        ),
+        "subject" => 'Welcome to Dentian',
+        "htmlContent" => '<html><head></head><body><p>Hello,</p>This is Dentian Ptd Ltd testing email</p></body></html>'
+    
+    );
+    
+    $ch = curl_init();
+    
+    curl_setopt($ch, CURLOPT_URL, 'https://api.sendinblue.com/v3/smtp/email');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    
+    $headers = array();
+    $headers[] = 'Accept: application/json';
+    $headers[] = 'Api-Key: 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';
+    $headers[] = 'Content-Type: application/json';
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    
+    $result = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+    curl_close($ch);
+    //print_r($result);
+    */
+    unset($_SESSION['patientprof']);
+    $db = new DB_Connect();
 
-	$stmt = $db->connect()->prepare("SELECT * FROM patient_profile");
-        $stmt->execute();
+    $stmt = $db->connect()->prepare("SELECT * FROM patient_profile");
+    $stmt->execute();
 
     if ($stmt->rowCount() > 0) {
         $patients_profile = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -168,17 +206,16 @@ if (isset($_POST["allPatients"])) {
                 ?>
             </tbody>
         </table>
-        <?php	
-		echo "$errormsg";
+        <?php
+        echo "$errormsg";
         echo "$addSuccess";
-		if ($rowCount == 1){
-			echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount result found!</span>";
-		}
-		else if ($rowCount > 1) {
-			echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount results found!</span>";
-		}
+        if ($rowCount == 1) {
+            echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount result found!</span>";
+        } else if ($rowCount > 1) {
+            echo "<span class='d-block p-2 bg-success text-white text-center'>$rowCount results found!</span>";
+        }
         unset($_SESSION['successAdd']);
-		?>
+        ?>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
@@ -189,6 +226,7 @@ if (isset($_POST["allPatients"])) {
             $patient_id = $(this).closest('tr').find('td:nth-child(1)').text();
             window.location = 'PatientProfile.php?PatientID=' + $patient_id;
         });
-	});
+    });
 </script>
+
 </html>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.7.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 24, 2022 at 08:15 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: sql6.freemysqlhosting.net
+-- Generation Time: Jun 24, 2022 at 10:26 AM
+-- Server version: 5.5.62-0ubuntu0.14.04.1
+-- PHP Version: 7.0.33-0ubuntu0.16.04.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+08:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+08:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fyp`
+-- Database: `sql6501826`
 --
 
 -- --------------------------------------------------------
@@ -103,8 +104,22 @@ CREATE TABLE `patient_profile` (
 --
 
 INSERT INTO `patient_profile` (`Patient_ID`, `Status`, `First_Name`, `Last_Name`, `NRIC_PNum`, `Gender`, `Birth_Date`, `Address`, `Nationality`, `Phone_Num`, `Email`, `Marital Status`, `Occupation`, `Smoker`, `Allergies`, `Long_term_med`, `Existing_Med_Conds`, `Referred_by_clinic`, `Referred_memo`, `Family_ID`, `Emer_Name`, `Emer_Contact`, `Emer_relation`, `Subsidies`) VALUES
-(1, 'Active', 'Elong', 'Mask', 'S8515249F', 'M', '1971-06-28', '3500 Deer Creek Road, Palo Alto', 'Singaporean', 84512355, 'elongmask@testla.com', 'Divorced', 'Investor', 'Yes', 'NULL', 'Captopril', 'High Blood Pressure', 'NULL', 'NULL', 123, 'May Mask', 91234567, 'Mother', 'No'),
-(2, 'Active', 'Steve', 'Jobs', 'S2324914E', 'M', '1992-01-30', '576 East Coast Road, S(459185)', 'Singaporean', 82412051, 'steve@orange.com', 'Married', 'Engineer', 'No', 'Penicillin', 'NULL', 'Laryngeal cancer', 'Planet Dental Centre Pte. Ltd.', 'Referred for unrestorable tooth', 420, 'Henry Jobs', 89012225, 'Siblings', 'Yes');
+(1, 'Active', 'Elong', 'Masked', 'S8515249F', 'M', '1971-06-28', '3500 Deer Creek Road, Palo Alto', 'Singaporean', 84512355, 'elongmask@testla.com', 'Divorced', 'Investor', 'Yes', 'NULL', 'NULL', 'High Blood Pressure', 'NULL', 'NULL', 123, 'May Mask', 91234567, 'Relative', 'No'),
+(2, 'Active', 'Steve', 'Jobs', 'S2324914E', 'M', '1992-01-30', '576 East Coast Road, S(459185)', 'Singaporean', 82412051, 'steve@orange.com', 'Married', 'Engineer', 'No', 'Penicillin', 'NULL', 'Laryngeal cancer', 'Planet Dental Centre Pte. Ltd.', 'Referred for unrestorable tooth', 420, 'Henry Jobs', 89012225, 'Siblings', 'Yes'),
+(3, 'Active', 'Peter', 'Lim', 'S9477780A', 'M', '1994-02-10', '8 Grange Road 09-01 Cineleisure Orchard Singapore ', 'Singaporean', 98653976, 'peterlim@sim.sg', 'Married', 'Investor', 'Yes', 'Diary food, seafood', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Mary Jane', 83776810, 'Mother', 'Yes'),
+(4, 'Active', 'Tom', 'Jerry', 'S4988877E', 'M', '1995-08-15', '5001 BEACH ROAD, #03-96 Singapore 199588', 'South Korean', 86708939, 'tomandjerry@disney.com', 'Separated', 'Actor', 'Yes', 'Shellfish, egg', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Crystal', 82187343, 'Siblings', 'No'),
+(5, 'Active', 'Boon', 'Tong Kee', 'S8185724E', 'M', '1982-09-18', '101 Kitchener Rd #01-23 Jln Besar Plaza S(761101)', 'Chinese', 81275824, 'btk@chickenrice.com', 'Married', 'Founder', 'Yes', 'Peanuts', 'Candesartan', 'Candesartan', 'Luminuous Dental Clinic', 'Broken Front tooth from fall in kitchen', 1, 'Wee Nam Kee', 91824754, 'Friend', 'Yes'),
+(6, 'Active', 'Steve', 'Rogers', 'S9541535I', 'M', '1995-06-20', '261 Waterloo St #03-27', 'South African', 95845632, 'Steve@avengers.com', 'Single', 'Military', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Peggy ', 94563214, 'Friend', 'No'),
+(7, 'Active', 'Mohammad', 'Ali', 'S7843690F', 'M', '1975-05-19', '55 Toh Guan Road East 03-01', 'American', 88125784, 'ali@fighter.com', 'Married', 'Professional Fighter', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Baba', 91587586, 'Siblings', 'No'),
+(8, 'Active', 'Bell', 'Gates', 'S9541534I', 'M', '1995-06-21', '190 Clemenceau Ave #01-21', 'American', 95632145, 'Bellgates@myghostsoft.com', 'Single', 'Business leader', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Melinda', 95463258, 'Spouse', 'No'),
+(9, 'Active', 'Mark', 'Lee', 'S0931492Z', 'M', '1998-01-04', 'Blk 253, Pasir Ris St 21 #01-233 Singapore 510253', 'Thai', 96613907, 'marklee@mediacorp.com', 'Separated', 'Director', 'Yes', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Janet Lee', 96372904, 'Spouse', 'Yes'),
+(10, 'Active', 'Sar', 'Kor', 'S8517693D', 'M', '1984-05-20', 'Tampines Mart 5 Tampines Street 32 #01-14', 'Singaporean', 96172466, 'sarkor@shirtpants.com', 'Separated', 'Housewife', 'Yes', 'Fur and peanuts', 'NULL', 'NULL', 'NULL', 'NULL', 420, 'Ali', 88125784, 'Friend', 'No'),
+(11, 'Active', 'Ip', 'Man', 'S9254863M', 'M', '2005-06-14', '277 ORCHARD ROAD#B1-03', 'Chinese', 96415896, 'Ipman@gmail.com', 'Single', 'Teacher', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 412, 'Ip Chun', 94850369, 'Father', 'No'),
+(12, 'Active', 'Charles', 'Yeo', 'S7158249A', 'M', '1971-06-27', '143 CECIL STREET, #09-01', 'Singaporean', 91245838, 'chenghetitong@psp.com', 'Single', 'Politician', 'No', 'NULL', 'NULL', 'Valium', 'NULL', 'NULL', 1, 'Tony', 92257284, 'Siblings', 'No'),
+(13, 'Active', 'Jordon', 'Lamsey', 'S6589845M', 'M', '1999-06-07', '3 Pasir Panjang Road 10-35 Alexandra Distripark', 'American', 96312585, 'JordonLamsey@HellKitchen.com', 'Married', 'Chef', 'No', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Tina Lamsey', 98436201, 'Spouse', 'No'),
+(14, 'Active', 'Donnie', 'Yen', 'S5650161D', 'M', '1991-07-08', 'Kilat Centre 33 Lorong Kilat #02-04 Singapore 5981', 'Singaporean', 96772978, 'donnieipman@gmail.com', 'Married', 'Fighter', 'No', 'NULL', 'Singulair, Flovent, Advair, Pulmicort, Symbicort', 'NULL', 'Family Clinic Ptd Ltd', 'Servere headache. Need more in-depth x-ray scan.', 1, 'Olivia Yen', 96882374, 'Spouse', 'No'),
+(15, 'Active', 'Gabriel', 'Quak', 'S7617482D', 'M', '1988-07-27', '1 Rochor Canal Road #01-33 Sim Lim Square', 'Singaporean', 92857646, 'quakgabriel@lcs.com', 'Married', 'Professional Footballer', 'No', 'NULL', 'NULL', 'NULL', 'Tampines Polyclinic', 'Specialist', 1, 'Wendy', 88125784, 'Spouse', 'No'),
+(16, 'Active', 'Wayne', 'Johnson', 'S9615486J', 'M', '2022-06-23', '222 Tagore Lane 01-11 TG Building', 'Argentinean', 90236485, 'WayneJohn@wwe.com', 'Married', 'Actor', 'No', 'Steroids', 'NULL', 'NULL', 'NULL', 'NULL', 1, 'Laura', 98463012, 'Spouse', 'No');
 
 -- --------------------------------------------------------
 
@@ -131,7 +146,12 @@ INSERT INTO `patient_record` (`Record_ID`, `Patient_ID`, `Treatment_Date`, `Trea
 (1, 1, '2022-05-15', 'Dental Check ups', 'Annual Dental check ups', 'Dental mirror, Ultrasonic cleaner, Curette/scaler, Fluoride solution', 'Nelson', 'Monica'),
 (2, 2, '2022-02-06', 'Restoration of teeth', 'Composite resins bonded to discolored teeth', 'Composite Resins', 'Nelson', 'Monica'),
 (3, 1, '2022-04-28', 'Professional Teeth Cleaning', 'Scaling and Polishing', 'Mouth mirror, Dental probe, Dental syringe, Scaler,Curette', 'Nil', 'Nil'),
-(4, 2, '2022-05-16', 'Dental Implants', 'Dental implants completed for the impacted tooth', 'Titanium\r\n', 'Nil', 'Nil');
+(4, 2, '2022-05-16', 'Dental Implants', 'Dental implants completed for the impacted tooth', 'Titanium\r\n', 'Nil', 'Nil'),
+(6, 1, '2022-06-10', 'Restoration of teeth', 'Right Molar 1', 'Platinum', 'Nelson', 'Peter'),
+(7, 1, '2022-06-24', 'Restoration of teeth', 'Right Molar 1 - decaying\r\nRight Molar 2 - impacted', 'Platinum', 'Nelson', 'Monica'),
+(8, 1, '2022-06-24', 'Dental Check ups', 'Right Molar 1 - decay\r\nLower Right Molar 2 - impacted', 'Platinum', 'Nelson', 'Monica'),
+(9, 3, '2022-06-23', 'Restoration of teeth', 'Right Molar 1 - Silver filling', 'Glass Ionomers, Dental amalgam', 'Lee', 'Kor'),
+(10, 3, '2022-06-24', 'Professional Teeth Cleaning', 'Cleaning of all teeth', 'Nil', 'Nelson', 'Monica');
 
 -- --------------------------------------------------------
 
@@ -181,10 +201,15 @@ CREATE TABLE `user_table` (
 
 INSERT INTO `user_table` (`Emp_ID`, `First_Name`, `Last_Name`, `username`, `password`, `NRIC_PNum`, `Gender`, `Birth_Date`, `Address`, `Phone_Num`, `Email`, `Role`, `Specialization`) VALUES
 (1001, 'Nelson', 'Tan', 'nelsontan', 'password', 'S0000001I', 'M', '1998-01-01', ' 138 CECIL ST #14-02 S(069538)', 98765432, 'nelsontan@dentian.com', 'Dentist', 'General Dentist'),
+(1002, 'Kor', 'Fee', 'korfee', 'password', 'S8915728H', 'M', '1982-02-17', 'Block 152 Bedok Reservoir Road #19-159 S460152', 91258723, 'korfee@dentian.com', 'Dentist', 'Oral Pathologist'),
+(1003, 'Lee', 'Kum Kee', 'leekk', 'password', 'S8612736F', 'F', '1975-08-19', ' 1 Woodlands Square 04-45 738099', 91585262, 'leekk@dentian.com', 'Dentist', 'Pedodontist'),
+(1004, 'Kim', 'Shin Wook', 'shinwook', 'password', 'S8201573D', 'M', '1982-08-19', ' Blk 628A Pasir Ris Dr 3 #01-326 S(510628)', 87526448, 'ksw@dentian.com', 'Dentist', 'Pedodontist'),
 (2001, 'Monica', 'Chng', 'monicachng', 'password', 'S0000002A', 'F', '1992-02-08', 'Sunnyvale Apartments 134B Lorong K Telok Kurau #03-04 S(425773)', 97654321, 'monicachng@dentian.com', 'Dentist Assistant', 'NULL'),
-(2002, 'Peter', 'Parker', 'pp', 'password', 's9811132f', 'M', '1982-04-04', 'test', 98157553, 'peter@parker.com', 'Dentist Assistant', 'NULL'),
+(2002, 'Peter', 'Parker', 'pp', 'password', 's9811132f', 'M', '1982-04-04', 'Tampines Mall', 98157553, 'peter@parker.com', 'Dentist Assistant', 'NULL'),
 (3001, 'Benjamin', 'Tan', 'bentan', 'password', 'S0000005J', 'M', '1993-04-04', '120 Hillview Avenue #06-08 S(669594)', 96543210, 'bentan@dentian.com', 'Receptionist', 'NULL'),
-(4001, 'Stephen', 'Strange', 'drstrange', 'password', 'S5521709K', 'M', '1993-04-15', '177A Bleecker Street', 95432109, 'drstrange@dentain.com', 'System Admin', 'NULL');
+(3002, 'Jia', 'Kantang', 'jkt', 'password', 'S7841728P', 'M', '1978-03-27', '257 Selegie Road #03-295 SELEGIE COMPLEX S188257', 91245718, 'potatoeater@dentian.com', 'Receptionist', 'NULL'),
+(4001, 'Stephen', 'Strange', 'drstrange', 'password', 'S5521709K', 'M', '1955-04-15', '177A Bleecker Street', 95432109, 'drstrange@dentain.com', 'System Admin', 'NULL'),
+(4002, 'Tony', 'Stark', 'ironman', 'password', 'S7518427B', 'M', '1975-01-28', '194 PANDAN LOOP, #06-17', 81257284, 'ironman@dentian.com', 'System Admin', 'NULL');
 
 --
 -- Indexes for dumped tables
@@ -230,19 +255,16 @@ ALTER TABLE `user_table`
 --
 ALTER TABLE `appointment_table`
   MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `dentist_schedule`
 --
 ALTER TABLE `dentist_schedule`
   MODIFY `schedule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `patient_record`
 --
 ALTER TABLE `patient_record`
-  MODIFY `Record_ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `Record_ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --

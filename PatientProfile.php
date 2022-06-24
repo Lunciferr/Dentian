@@ -17,7 +17,7 @@ if ($_SESSION['Role'] != "Receptionist") {
         $famID = $patients_profile[0]['Family_ID'];
         $stmt = $db->connect()->prepare("SELECT COUNT(Family_ID) FROM patient_profile WHERE Family_ID = '$famID'");
         $stmt->execute();
-        $haveFam = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $haveFam = $stmt->fetch()[0];
         if (!isset($_SESSION['patientprofupdate']) && empty($_SESSION['patientprofupdate'])) {
             $patientprofupdate = '';
         } else {
@@ -804,7 +804,7 @@ if (isset($_POST["updateBtn"])) {
             $("#referredBy").val("<?php echo $patients_profile[0]['Referred_by_clinic']; ?>");
             $("#referredMemo").val("<?php echo $patients_profile[0]['Referred_memo']; ?>");
         }
-        if ("<?php echo $patients_profile[0]['Family_ID']; ?>" == "N/A" || "<?php echo $patients_profile[0]['Family_ID']; ?>" == "") {
+        if ("<?php echo $haveFam ?>" == "1") {
             $("#familyNo").attr('checked', 'checked');
             $("#familyInfo").hide();
 

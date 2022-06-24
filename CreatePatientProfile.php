@@ -62,10 +62,19 @@ if (isset($_POST["addPatientProfileBtn"])) {
         $stmt->execute();
         $famID = $stmt->fetch()[0];
     } else {
-        $stmt = $db->connect()->prepare("SELECT MAX(Family_ID) from patient_profile where NRIC_Pnum = '$famNRIC' and Phone_Num = '$famPhone'");
-        $stmt->execute();
-        $famID = $stmt->fetch()[0];
-        $famID++;
+        $db = new DB_Connect();
+        $change = true;
+        while ($change) {
+            $randNum = mt_rand(1, 10);
+            $stmt = $db->connect()->prepare("SELECT COUNT(Family_ID) FROM patient_profile where Family_ID = '$randNum'");
+            $stmt->execute();
+            $exist = $stmt->fetch()[0];
+
+            if ($exist == 0) {
+                $change = false;
+                $famID = $randNum;
+            }
+        }
     }
     $subsidy = $_POST['subsidy'];
 
