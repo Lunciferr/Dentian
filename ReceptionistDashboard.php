@@ -187,7 +187,7 @@ if (isset($_POST["allPatients"])) {
     $('document').ready(function() {
         $('.editBtn').click(function() {
             $patient_id = $(this).closest('tr').find('td:nth-child(1)').text();
-            window.location = 'PatientProfile.php?PatientID=' + $patient_id;
+            window.location = 'https://dentian.herokuapp.com/PatientProfile.php?PatientID=' + $patient_id;
         });
 	});
 </script>
