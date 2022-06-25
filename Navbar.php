@@ -486,7 +486,7 @@ switch ($_SESSION['Role']) {
                     </div>
                     <div class="mb-3" id="famid">
                         <label class="form-label">Family ID</label>
-                        <input type="text" class="form-control" name="searchFam" pattern="[0-9]{3}" title="3 digit ID. [E.g. 123]">
+                        <input type="text" class="form-control" name="searchFam" pattern="[0-9]{4}" title="4 digit ID. [E.g. 1234]">
                     </div>
                     <button type="submit" class="btn btn-primary" name="searchBtn">Search!</button>
                 </form>
